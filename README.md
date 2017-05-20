@@ -36,23 +36,3 @@
   The algorithm will calculate the average mood of the room by seating.
   
   So, what are you waiting for? Sit down your guests appropriately!
-
-# License
-
-    Copyright 2017 Federico Gianno
-
-    happy-marriage is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    happy-marriage is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with happy-marriage. If not, see <http://www.gnu.org/licenses/>.
-
-    Developed by Nindo 
-
