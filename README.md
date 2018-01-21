@@ -36,7 +36,3 @@
   The algorithm will calculate the average mood of the room by seating.
   
   So, what are you waiting for? Sit down your guests appropriately!
-  
-  # Note
-  
-   Copyright (c) 2017 Federico Gianno
