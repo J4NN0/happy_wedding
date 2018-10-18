@@ -4,7 +4,7 @@
 
 # Usage
 
- The file "banquet.txt" must exists.
+ The file "banquet.txt" must exist.
  
  The first line of the file must contain respectively the values N = Number of guests, K = Number of tables and M = Tables seats.
  
