@@ -7,6 +7,7 @@ Prepare your wedding at best by S\sitting your guests in the best possible way (
 1. Clone repo
 
        git clone https://github.com/J4NN0/happy_wedding.git
+       cd happy_wedding
        
 2. Make sure `banquet.txt` file exists and populate it accordingly
  
@@ -30,5 +31,5 @@ Prepare your wedding at best by S\sitting your guests in the best possible way (
             1 3 5 3 0 2
             1 4 -4 3 2 0
 
- 3. The algorithm, through a recursive function, will calculate the average mood of the room and will give you each person's seating. 
+ 3. Make and run the program: the algorithm, through a recursive function, will calculate the average mood of the room and will give you each person's seating. 
  4. So, what are you waiting for? Sit down your guests appropriately!
