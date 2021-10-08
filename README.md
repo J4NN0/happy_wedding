@@ -1,6 +1,6 @@
 # happy_wedding
 
-Prepare your wedding at best by S\sitting your guests in the best possible way (based on their relationships and/or interactions).
+Prepare your wedding at best by sitting your guests in the best possible way (based on their relationships and/or interactions).
 
 # Usage
 
