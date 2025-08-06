@@ -35,13 +35,13 @@
                 Planning a wedding? Great. Now ruin it beautifully by seating Aunt Karen next to your ex.
             </p>
             <p>
-                Happy Wedding is the world’s most questionable wedding seating simulator – invite your guests, track their rivalries, and let our mood-maximizing algorithm do its emotional damage. Will you create eternal bliss… or a polite disaster?
+                Happy Wedding is the world's most questionable wedding seating simulator - invite your guests, track their rivalries, and let our mood-maximizing algorithm do its emotional damage. Will you create eternal bliss... or a polite disaster?
             </p>
             <p>
-                Start by entering how many guests are coming to your wedding — you can give them names or leave them as mysterious partygoers. Then, define how each pair feels about each other on a scale from –5 (arch-enemies) to +5 (soulmates). Once everyone’s personalities and grudges are locked in, set how many tables are available and how many guests each one can hold. Hit the button, and the tool will calculate the best possible seating plan to maximize harmony (or at least avoid food fights).
+                Start by entering how many guests are coming to your wedding - you can give them names or leave them as mysterious partygoers. Then, define how each pair feels about each other on a scale from -5 (arch-enemies) to +5 (soulmates). Once everyone's personalities and grudges are locked in, set how many tables are available and how many guests each one can hold. Hit the button, and the tool will calculate the best possible seating plan to maximize harmony (or at least avoid food fights).
             </p>
             <p class="technical-note">
-                This tool uses a brute-force search (i.e. exhaustive search) to evaluate all possible seating permutations and select the one that maximizes total guest compatibility. Since the solution space grows factorially with the number of guests and tables, runtime increases rapidly with scale. For implementation details, check out the GitHub repo.
+                This tool uses a brute-force search (i.e. exhaustive search) to evaluate all possible seating permutations and select the one that maximizes total guest compatibility. Since the solution space grows factorially with the number of guests and tables, runtime increases rapidly with scale. For implementation details, check out the <a href="https://github.com/J4NN0/happy-wedding">GitHub repo</a>.
             </p>
         </section>
 
@@ -59,10 +59,10 @@
                     <div class="person-item">
                         <span class="person-icon">👤</span>
                         <input type="text" class="person-name" placeholder="Guest name" value="Guest 1">
-                        <button class="remove-person-btn" onclick="removePerson(0)">−</button>
+                        <button class="remove-person-btn" onclick="removePerson(0)">-</button>
                     </div>
                 </div>
-                <button class="add-person-btn-below" onclick="addPerson()">⊕ Add Guest</button>
+                <button class="add-person-btn-below" onclick="addPerson()">+ Add Guest</button>
             </div>
 
             <div class="matrix-section">
@@ -109,9 +109,9 @@
                         <span class="counter-value small" id="chairsCount0">1</span>
                         <button class="counter-btn small increase" onclick="increaseChairs(0)">↑</button>
                     </div>
-                    <button class="remove-table-btn" onclick="removeTable(0)">−</button>
+                    <button class="remove-table-btn" onclick="removeTable(0)">-</button>
                 </div>
-                <button class="add-table-btn-side" onclick="addTable()">⊕</button>
+                <button class="add-table-btn-side" onclick="addTable()">+</button>
             </div>
 
             <section class="planning-section">

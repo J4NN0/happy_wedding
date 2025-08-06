@@ -67,7 +67,7 @@ function addPerson() {
     personItem.innerHTML = `
         <span class="person-icon">${randomIcon}</span>
         <input type="text" class="person-name" placeholder="Guest name" value="Guest ${newPersonIndex + 1}">
-        <button class="remove-person-btn" onclick="removePerson(${newPersonIndex})">−</button>
+        <button class="remove-person-btn" onclick="removePerson(${newPersonIndex})">-</button>
     `;
     
     peopleList.appendChild(personItem);
@@ -113,7 +113,7 @@ function updatePeopleDisplay() {
         personItem.innerHTML = `
             <span class="person-icon">${peopleIcons[i] || '👤'}</span>
             <input type="text" class="person-name" placeholder="Guest name" value="${people[i] || `Guest ${i + 1}`}" onchange="updatePersonName(${i}, this.value)">
-            <button class="remove-person-btn" onclick="removePerson(${i})">−</button>
+            <button class="remove-person-btn" onclick="removePerson(${i})">-</button>
         `;
         peopleList.appendChild(personItem);
     }
@@ -314,7 +314,7 @@ function addTable() {
                 <span class="table-number">${newTableIndex + 1}</span>
             </div>
         </div>
-        <button class="remove-table-btn" onclick="removeTable(${newTableIndex})">−</button>
+        <button class="remove-table-btn" onclick="removeTable(${newTableIndex})">-</button>
     `;
     
     // Insert the new table before the add button
@@ -361,7 +361,7 @@ function updateTablesDisplay() {
                     <span class="table-number">${i + 1}</span>
                 </div>
             </div>
-            <button class="remove-table-btn" onclick="removeTable(${i})">−</button>
+            <button class="remove-table-btn" onclick="removeTable(${i})">-</button>
         `;
         
         // Insert table before the add button
