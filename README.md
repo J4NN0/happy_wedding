@@ -1,6 +1,15 @@
 # Happy Wedding
 
-Prepare your wedding at best by seating your guests in the best possible way based on each guest's interaction with the others, by calculating the average mood of the room and assigning each guest a specific seat.
+Imagine you’re planning a wedding. You’ve got a list of guests — friends, family, exes you couldn’t uninvite — and naturally, some of them love each other, some barely tolerate each other, and a few would happily fight over the last slice of cake.
+
+Each guest has a “mood interaction score” with every other guest. For example:
+- Batman and Robin are besties: +5
+- Batman and The Joker? Well… eternal nemesis vibes: –5
+- Harley Quinn and The Joker? Toxic but high-energy: +3
+
+The idea is to seat people together in a way that maximizes the mood in the room — meaning, tables full of people who vibe well, or at least don’t threaten to flip it over.
+
+That’s where this tool comes in. It takes your guest list and their interactions, and finds the best possible seating plan that creates the happiest tables — using nothing but math, recursion, and computational suffering.
 
 # Seating Optimization Logic
 
