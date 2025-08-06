@@ -1,22 +1,14 @@
 # Happy Wedding
 
-The core of the tool is a brute-force recursive algorithm that explores every possible way to assign guests to tables, in order to maximize the average mood at the wedding.
+Prepare your wedding at best by seating your guests in the best possible way based on each guest's interaction with the others, by calculating the average mood of the room and assigning each guest a specific seat.
 
-Each guest is assigned to one of the tables. For every complete assignment, the algorithm checks calculates the total mood for each table by summing the pairwise interactions of all guests seated together (as defined in a symmetric `N × N` matrix), and computes the average mood across all non-empty tables. The objective is to find the assignment that results in the highest average mood per table.
+# Seating Optimization Logic
 
-While this brute-force approach guarantees the optimal result, it does not scale well. For larger inputs, approximations or heuristic-based methods (like greedy search or genetic algorithms) could offer practical runtime improvements with near-optimal results.
+The problem is [NP-Hard](https://en.wikipedia.org/wiki/NP-hardness) where the goal is to partition the set of `N` guests into `K` tables (groups), each with `M` elements, and assign a table (group index) to each guest.
 
-# Complexity
+The tool uses a brute-force recursive algorithm that explores every possible way to assign guests to tables, in order to maximize the average mood at the wedding. Each guest is assigned to one of the tables. For every complete assignment, the algorithm calculates the total mood for each table by summing the pairwise interactions of all guests seated together (as defined in a symmetric `N × N` matrix), and computes the average mood across all non-empty tables.
 
-Let:
-- `N` be the number of guests
-- `K` be the number of tables
-- `M` be the max number of seats per table
-- `matr[i][j]` be the mood contribution between guest `i` and guest `j`
-
-This approach explores every possible seating configuration, which leads to an exponential growth in time. Specifically, there are `K^N` total configurations, since each of the `N` guests can be placed on any of the `K` tables.
-
-Each complete configuration is evaluated in `O(N^2)` time, due to the nested pairwise mood calculations across guest assignments. As a result, the overall time complexity is `O(K^N x N^2)`.
+While this brute-force approach guarantees the optimal result, it does not scale well. This approach explores every possible seating configuration, which leads to an exponential growth in time. For larger inputs, approximations or heuristic-based methods (like greedy search or genetic algorithms) could offer practical runtime improvements with near-optimal results.
 
 # Usage
 
