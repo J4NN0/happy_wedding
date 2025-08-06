@@ -1,6 +1,22 @@
-# happy_wedding
+# Happy Wedding
 
-Prepare your wedding at best by sitting your guests in the best possible way (based on their relationships and/or interactions).
+The core of the tool is a brute-force recursive algorithm that explores every possible way to assign guests to tables, in order to maximize the average mood at the wedding.
+
+Each guest is assigned to one of the tables. For every complete assignment, the algorithm checks calculates the total mood for each table by summing the pairwise interactions of all guests seated together (as defined in a symmetric `N × N` matrix), and computes the average mood across all non-empty tables. The objective is to find the assignment that results in the highest average mood per table.
+
+While this brute-force approach guarantees the optimal result, it does not scale well. For larger inputs, approximations or heuristic-based methods (like greedy search or genetic algorithms) could offer practical runtime improvements with near-optimal results.
+
+# Complexity
+
+Let:
+- `N` be the number of guests
+- `K` be the number of tables
+- `M` be the max number of seats per table
+- `matr[i][j]` be the mood contribution between guest `i` and guest `j`
+
+This approach explores every possible seating configuration, which leads to an exponential growth in time. Specifically, there are `K^N` total configurations, since each of the `N` guests can be placed on any of the `K` tables.
+
+Each complete configuration is evaluated in `O(N^2)` time, due to the nested pairwise mood calculations across guest assignments. As a result, the overall time complexity is `O(K^N x N^2)`.
 
 # Usage
 
