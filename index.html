@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="author" content="Federico Gianno"/>
+    <meta property="description" content="Plan your wedding at its best"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content="Happy Wedding"/>
+    <meta property="og:url" content="https://j4nn0.github.io/happy-wedding"/>
+    <meta property="og:image" content="https://raw.githubusercontent.com/J4NN0/happy-wedding/main/img/jwedding.png"/>
+    <meta property="og:description" content="Plan your wedding at its best"/>
+
+    <title>Happy Wedding</title>
+
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/people.css">
+    <link rel="stylesheet" href="css/matrix.css">
+    <link rel="stylesheet" href="css/wedding-setup.css">
+    <link rel="stylesheet" href="css/planning.css">
+    <link rel="stylesheet" href="css/title.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&family=Dancing+Script:wght@700&family=Great+Vibes&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="title">Happy Wedding</h1>
+        </header>
+
+        <section class="description">
+            <p>
+                Planning a wedding? Great. Now ruin it beautifully by seating Aunt Karen next to your ex.
+            </p>
+            <p>
+                Happy Wedding is the world’s most questionable wedding seating simulator – invite your guests, track their rivalries, and let our mood-maximizing algorithm do its emotional damage. Will you create eternal bliss… or a polite disaster?
+            </p>
+            <p>
+                Start by entering how many guests are coming to your wedding — you can give them names or leave them as mysterious partygoers. Then, define how each pair feels about each other on a scale from –5 (arch-enemies) to +5 (soulmates). Once everyone’s personalities and grudges are locked in, set how many tables are available and how many guests each one can hold. Hit the button, and the tool will calculate the best possible seating plan to maximize harmony (or at least avoid food fights).
+            </p>
+            <p class="technical-note">
+                This tool uses a brute-force search (i.e. exhaustive search) to evaluate all possible seating permutations and select the one that maximizes total guest compatibility. Since the solution space grows factorially with the number of guests and tables, runtime increases rapidly with scale. For implementation details, check out the GitHub repo.
+            </p>
+        </section>
+
+        <main class="main-content">
+            <div class="people-section">
+                <div class="people-counter">
+                    <span class="counter-label">Total People</span>
+                    <div class="counter-controls">
+                        <button class="counter-btn decrease" onclick="decreasePeople()">↓</button>
+                        <span class="counter-value" id="peopleCount">1</span>
+                        <button class="counter-btn increase" onclick="increasePeople()">↑</button>
+                    </div>
+                </div>
+                <div class="people-list" id="peopleList">
+                    <div class="person-item">
+                        <span class="person-icon">👤</span>
+                        <input type="text" class="person-name" placeholder="Guest name" value="Guest 1">
+                        <button class="remove-person-btn" onclick="removePerson(0)">−</button>
+                    </div>
+                </div>
+                <button class="add-person-btn-below" onclick="addPerson()">⊕ Add Guest</button>
+            </div>
+
+            <div class="matrix-section">
+                <h3>Interaction Scores</h3>
+                <div class="matrix-container">
+                    <div class="matrix" id="interactionMatrix">
+                        <!-- Matrix will be generated dynamically -->
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <section class="wedding-setup-section">
+            <div class="setup-header">
+                <h3>Wedding Setup</h3>
+                <div class="setup-counters">
+                    <div class="tables-counter">
+                        <span class="counter-label">Total Tables</span>
+                        <div class="counter-controls">
+                            <button class="counter-btn decrease" onclick="decreaseTables()">↓</button>
+                            <span class="counter-value" id="tablesCount">1</span>
+                            <button class="counter-btn increase" onclick="increaseTables()">↑</button>
+                        </div>
+                    </div>
+                    <div class="chairs-counter">
+                        <span class="counter-label">Chair(s) Per Table</span>
+                        <div class="counter-controls">
+                            <button class="counter-btn decrease" onclick="decreaseTotalChairs()">↓</button>
+                            <span class="counter-value" id="totalChairsCount">1</span>
+                            <button class="counter-btn increase" onclick="increaseTotalChairs()">↑</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="setup-container" id="setupContainer">
+                <div class="table-visual" id="table0">
+                    <div class="chairs-container">
+                        <div class="table-circle">
+                            <span class="table-number">1</span>
+                        </div>
+                    </div>
+                    <div class="table-controls">
+                        <button class="counter-btn small decrease" onclick="decreaseChairs(0)">↓</button>
+                        <span class="counter-value small" id="chairsCount0">1</span>
+                        <button class="counter-btn small increase" onclick="increaseChairs(0)">↑</button>
+                    </div>
+                    <button class="remove-table-btn" onclick="removeTable(0)">−</button>
+                </div>
+                <button class="add-table-btn-side" onclick="addTable()">⊕</button>
+            </div>
+
+            <section class="planning-section">
+                <div class="planning-container">
+                    <button class="start-planning-btn" onclick="startWeddingPlanning()">
+                        🎉 Start Planning Wedding Seating
+                    </button>
+                    <p class="planning-description">Generate optimal seating arrangements based on your guests' interaction scores</p>
+                </div>
+            </section>
+        </section>
+        </section>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>

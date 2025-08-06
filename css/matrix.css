@@ -1,0 +1,123 @@
+/* Matrix Section */
+.matrix-section {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 1.5rem;
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.matrix-section h3 {
+    font-family: 'Playfair Display', serif;
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.matrix-container {
+    overflow-x: auto;
+    overflow-y: hidden;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.matrix {
+    border: 2px solid #3498db;
+    border-radius: 10px;
+    overflow: hidden;
+    background: white;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    table-layout: fixed;
+}
+
+.matrix-row {
+    display: flex;
+    width: 100%;
+}
+
+.matrix-cell {
+    border: 1px solid #e8f4f8;
+    padding: 0.5rem;
+    min-width: 80px;
+    min-height: 40px;
+    width: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    transition: background 0.3s ease;
+    flex-shrink: 0;
+}
+
+.matrix-cell.header {
+    background: #3498db;
+    color: white;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-align: center;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.matrix-cell.input {
+    background: #f8f9fa;
+}
+
+.matrix-cell input {
+    width: 100%;
+    border: none;
+    background: transparent;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #333;
+}
+
+.matrix-cell input:focus {
+    outline: none;
+    background: rgba(52, 152, 219, 0.1);
+}
+
+.matrix-cell.readonly input {
+    background-color: #f0f0f0 !important;
+    color: #666 !important;
+    cursor: not-allowed;
+}
+
+.matrix-cell.readonly input:focus {
+    background-color: #f0f0f0 !important;
+    outline: none;
+}
+
+.matrix-cell.diagonal {
+    background: #e8f4f8;
+    color: #7f8c8d;
+    font-weight: 600;
+}
+
+.matrix-icon {
+    margin-right: 0.3rem;
+    font-size: 1.1rem;
+}
+
+/* Responsive Design for Matrix */
+@media (max-width: 768px) {
+    .matrix-cell {
+        min-width: 60px;
+        width: 60px;
+        min-height: 35px;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .matrix-cell {
+        min-width: 50px;
+        width: 50px;
+        min-height: 30px;
+        font-size: 0.7rem;
+    }
+} 
