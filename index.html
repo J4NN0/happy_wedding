@@ -48,7 +48,7 @@
         <main class="main-content">
             <div class="people-section">
                 <div class="people-counter">
-                    <span class="counter-label">Total Guests</span>
+                    <span class="counter-label">👤 Total Guests</span>
                     <div class="counter-controls">
                         <input type="number" class="counter-input" id="peopleCount" value="1" min="1" onchange="setPeopleCount(this.value)">
                     </div>
@@ -64,7 +64,7 @@
             </div>
 
             <div class="matrix-section">
-                <h3>Interaction Scores</h3>
+                <h3>😤 Interaction Scores</h3>
                 <div class="matrix-container">
                     <div class="matrix" id="interactionMatrix">
                         <!-- Matrix will be generated dynamically -->
@@ -75,7 +75,7 @@
 
         <section class="wedding-setup-section">
             <div class="setup-header">
-                <h3>Wedding Setup</h3>
+                <h3>💒 Wedding Setup</h3>
                 <div class="setup-counters">
                     <div class="tables-counter">
                         <span class="counter-label">Total Tables</span>
@@ -105,10 +105,14 @@
 
             <section class="planning-section">
                 <div class="planning-container">
-                    <button class="start-planning-btn" onclick="startWeddingPlanning()">
-                        🎉 Start Planning Wedding Seating
-                    </button>
-                    <p class="planning-description">Generate optimal seating arrangements based on your guests' interaction scores</p>
+                    <div class="planning-buttons">
+                        <button class="reset-btn" onclick="resetToDefaults()">
+                            Reset to Defaults
+                        </button>
+                        <button class="start-planning-btn" onclick="startWeddingPlanning()">
+                            Plan Wedding Seats
+                        </button>
+                    </div>
                 </div>
             </section>
         </section>
