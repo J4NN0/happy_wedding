@@ -28,3 +28,9 @@ So, based on the example above, here’s what the interaction matrix would look 
 | Robin  | +5     | 0     | -3    | +2     |
 | Joker  | -5     | -3    | 0     | +2     |
 | Alfred | +2     | +2    | +2    | 0      |
+
+And considering two tables available with two chairs each, the optimal solution would be:
+- Table 1: Batman and Robin
+- Table 2: Joker and Alfred
+
+With an average mood score of `3.50`.
