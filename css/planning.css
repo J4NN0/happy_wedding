@@ -4,16 +4,16 @@
 }
 
 .planning-container {
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(30, 30, 30, 0.95);
     padding: 2rem;
     border-radius: 20px;
-    box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+    box-shadow: 0 12px 40px rgba(214, 51, 132, 0.3);
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(214, 51, 132, 0.3);
 }
 
 .start-planning-btn {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #d63384, #e91e63, #ff6b9d, #c44569);
     color: white;
     border: none;
     padding: 1rem 2.5rem;
@@ -22,7 +22,7 @@
     border-radius: 50px;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+    box-shadow: 0 8px 25px rgba(214, 51, 132, 0.5);
     text-transform: uppercase;
     letter-spacing: 1px;
     margin-bottom: 1rem;
@@ -31,17 +31,17 @@
 
 .start-planning-btn:hover {
     transform: translateY(-3px);
-    box-shadow: 0 12px 35px rgba(102, 126, 234, 0.6);
-    background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
+    box-shadow: 0 12px 35px rgba(214, 51, 132, 0.7);
+    background: linear-gradient(135deg, #c44569, #d63384, #e91e63, #b73e56);
 }
 
 .start-planning-btn:active {
     transform: translateY(-1px);
-    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+    box-shadow: 0 6px 20px rgba(214, 51, 132, 0.5);
 }
 
 .planning-description {
-    color: #666;
+    color: #cccccc;
     font-size: 1rem;
     font-style: italic;
     margin: 0;

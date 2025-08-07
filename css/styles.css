@@ -6,9 +6,9 @@
 
 body {
     font-family: 'Inter', sans-serif;
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 50%, #0d0d0d 100%);
     min-height: 100vh;
-    color: #333;
+    color: #ffffff;
     line-height: 1.6;
 }
 
@@ -26,19 +26,19 @@ body {
 
 /* Description */
 .description {
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(30, 30, 30, 0.95);
     padding: 1.5rem;
     border-radius: 15px;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    box-shadow: 0 8px 32px rgba(214, 51, 132, 0.2);
     margin-bottom: 2rem;
     text-align: left;
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(214, 51, 132, 0.3);
 }
 
 .description p {
     font-size: 1.1rem;
-    color: #555;
+    color: #e0e0e0;
     margin-bottom: 1rem;
 }
 
@@ -49,15 +49,26 @@ body {
 .description p.technical-note {
     font-family: 'TheSans Typewriter', monospace;
     font-size: 0.95rem;
-    background: rgba(241, 245, 249, 0.7);
+    background: rgba(40, 40, 40, 0.8);
     padding: 1rem;
-    border-left: 4px solid #6c5ce7;
-    color: #444;
+    border-left: 4px solid #d63384;
+    color: #cccccc;
     margin-top: 1.5rem;
     border-radius: 0 8px 8px 0;
-    box-shadow: 0 2px 10px rgba(108, 92, 231, 0.1);
+    box-shadow: 0 2px 10px rgba(214, 51, 132, 0.2);
     letter-spacing: 0.5px;
     line-height: 1.7;
+}
+
+.description a {
+    color: #d63384;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.description a:hover {
+    color: #e91e63;
+    text-decoration: underline;
 }
 
 /* Main Content */
@@ -71,7 +82,7 @@ body {
 /* Generic Button Styles */
 .counter-btn {
     background: transparent;
-    color: #2c3e50;
+    color: #ffffff;
     border: none;
     border-radius: 0;
     width: auto;
@@ -99,18 +110,18 @@ body {
 }
 
 .counter-btn:hover {
-    background: rgba(52, 152, 219, 0.1);
+    background: rgba(214, 51, 132, 0.2);
     transform: scale(1.2);
     box-shadow: none;
 }
 
 .counter-btn.decrease:hover {
-    background: rgba(52, 152, 219, 0.1);
+    background: rgba(214, 51, 132, 0.2);
     box-shadow: none;
 }
 
 .counter-btn.increase:hover {
-    background: rgba(52, 152, 219, 0.1);
+    background: rgba(214, 51, 132, 0.2);
     box-shadow: none;
 }
 
@@ -123,7 +134,7 @@ body {
 .counter-value {
     font-weight: 600;
     font-size: 1.2rem;
-    color: #2c3e50;
+    color: #ffffff;
     min-width: 30px;
     text-align: center;
 }
@@ -135,7 +146,7 @@ body {
 
 .counter-label {
     font-weight: 600;
-    color: #2c3e50;
+    color: #ffffff;
     font-size: 1.1rem;
 }
 
@@ -148,11 +159,11 @@ body {
 
 .counter-input {
     width: 60px;
-    border: 1px solid #e8f4f8;
-    background: #f8f9fa;
+    border: 1px solid rgba(214, 51, 132, 0.5);
+    background: rgba(30, 30, 30, 0.8);
     text-align: center;
     font-size: 1rem;
-    color: #333;
+    color: #ffffff;
     padding: 0.3rem;
     border-radius: 5px;
     font-weight: 600;
@@ -166,18 +177,19 @@ body {
 
 .counter-input:focus {
     outline: none;
-    background: rgba(52, 152, 219, 0.1);
-    border-color: #3498db;
+    background: rgba(214, 51, 132, 0.1);
+    border-color: #d63384;
+    box-shadow: 0 0 0 2px rgba(214, 51, 132, 0.3);
 }
 
 /* Generic Card Styles */
 .generic-card {
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(30, 30, 30, 0.95);
     padding: 1.5rem;
     border-radius: 15px;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    box-shadow: 0 8px 32px rgba(214, 51, 132, 0.2);
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(214, 51, 132, 0.3);
 }
 
 /* Responsive Design */

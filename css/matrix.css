@@ -1,16 +1,16 @@
 /* Matrix Section */
 .matrix-section {
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(30, 30, 30, 0.95);
     padding: 1.5rem;
     border-radius: 15px;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    box-shadow: 0 8px 32px rgba(214, 51, 132, 0.2);
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(214, 51, 132, 0.3);
 }
 
 .matrix-section h3 {
     font-family: 'Playfair Display', serif;
-    color: #2c3e50;
+    color: #ffffff;
     margin-bottom: 1.5rem;
     text-align: center;
     font-size: 1.5rem;
@@ -26,11 +26,11 @@
 }
 
 .matrix {
-    border: 2px solid #3498db;
+    border: 2px solid #d63384;
     border-radius: 10px;
     overflow: hidden;
-    background: white;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    background: rgba(20, 20, 20, 0.9);
+    box-shadow: 0 4px 16px rgba(214, 51, 132, 0.3);
     table-layout: fixed;
 }
 
@@ -40,7 +40,7 @@
 }
 
 .matrix-cell {
-    border: 1px solid #e8f4f8;
+    border: 1px solid rgba(214, 51, 132, 0.2);
     padding: 0.5rem;
     min-width: 80px;
     min-height: 40px;
@@ -48,13 +48,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: white;
+    background: rgba(30, 30, 30, 0.8);
     transition: background 0.3s ease;
     flex-shrink: 0;
 }
 
 .matrix-cell.header {
-    background: #3498db;
+    background: linear-gradient(135deg, #d63384, #e91e63);
     color: white;
     font-weight: 600;
     font-size: 0.9rem;
@@ -64,7 +64,7 @@
 }
 
 .matrix-cell.input {
-    background: #f8f9fa;
+    background: rgba(40, 40, 40, 0.8);
 }
 
 .matrix-cell input {
@@ -73,28 +73,28 @@
     background: transparent;
     text-align: center;
     font-size: 0.9rem;
-    color: #333;
+    color: #ffffff;
 }
 
 .matrix-cell input:focus {
     outline: none;
-    background: rgba(52, 152, 219, 0.1);
+    background: rgba(214, 51, 132, 0.1);
 }
 
 .matrix-cell.readonly input {
-    background-color: #f0f0f0 !important;
-    color: #666 !important;
+    background-color: rgba(50, 50, 50, 0.8) !important;
+    color: #aaa !important;
     cursor: not-allowed;
 }
 
 .matrix-cell.readonly input:focus {
-    background-color: #f0f0f0 !important;
+    background-color: rgba(50, 50, 50, 0.8) !important;
     outline: none;
 }
 
 .matrix-cell.diagonal {
-    background: #e8f4f8;
-    color: #7f8c8d;
+    background: rgba(214, 51, 132, 0.2);
+    color: #ffffff;
     font-weight: 600;
 }
 

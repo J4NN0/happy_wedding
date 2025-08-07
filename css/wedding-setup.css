@@ -1,11 +1,11 @@
 /* Wedding Setup Section */
 .wedding-setup-section {
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(30, 30, 30, 0.95);
     padding: 1.5rem;
     border-radius: 15px;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    box-shadow: 0 8px 32px rgba(214, 51, 132, 0.2);
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(214, 51, 132, 0.3);
 }
 
 .setup-header {
@@ -14,12 +14,12 @@
     align-items: center;
     margin-bottom: 1.5rem;
     padding-bottom: 1rem;
-    border-bottom: 2px solid #e8f4f8;
+    border-bottom: 2px solid rgba(214, 51, 132, 0.3);
 }
 
 .setup-header h3 {
     font-family: 'Playfair Display', serif;
-    color: #2c3e50;
+    color: #ffffff;
     font-size: 1.5rem;
     margin: 0;
 }
@@ -52,9 +52,9 @@
     flex-direction: column;
     align-items: center;
     padding: 1.5rem;
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(40, 40, 40, 0.8);
     border-radius: 15px;
-    border: 2px solid rgba(52, 152, 219, 0.2);
+    border: 2px solid rgba(214, 51, 132, 0.3);
     transition: all 0.3s ease;
     min-height: 200px;
     width: 200px;
@@ -62,9 +62,10 @@
 }
 
 .table-visual:hover {
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(50, 50, 50, 0.9);
     transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    box-shadow: 0 8px 25px rgba(214, 51, 132, 0.3);
+    border-color: rgba(214, 51, 132, 0.5);
 }
 
 .table-circle {
@@ -104,17 +105,18 @@
     position: absolute;
     width: 20px;
     height: 20px;
-    background: #2c3e50;
+    background: #ffffff;
     border-radius: 50%;
-    border: 2px solid white;
-    box-shadow: 0 2px 8px rgba(44, 62, 80, 0.3);
+    border: 2px solid rgba(214, 51, 132, 0.5);
+    box-shadow: 0 2px 8px rgba(214, 51, 132, 0.3);
     transition: all 0.3s ease;
     z-index: 1;
 }
 
 .chair:hover {
     transform: scale(1.2);
-    box-shadow: 0 4px 12px rgba(44, 62, 80, 0.4);
+    box-shadow: 0 4px 12px rgba(214, 51, 132, 0.5);
+    background: rgba(214, 51, 132, 0.2);
 }
 
 .table-controls {
@@ -150,7 +152,7 @@
 }
 
 .add-table-btn-side {
-    background: #27ae60;
+    background: linear-gradient(135deg, #d63384, #e91e63);
     color: white;
     border: none;
     border-radius: 15px;
@@ -162,16 +164,16 @@
     align-items: center;
     justify-content: center;
     transition: all 0.3s ease;
-    box-shadow: 0 2px 8px rgba(39, 174, 96, 0.3);
+    box-shadow: 0 2px 8px rgba(214, 51, 132, 0.4);
     flex-shrink: 0;
-    border: 2px solid rgba(39, 174, 96, 0.2);
+    border: 2px solid rgba(214, 51, 132, 0.3);
     align-self: center;
 }
 
 .add-table-btn-side:hover {
-    background: #229954;
+    background: linear-gradient(135deg, #c44569, #d63384);
     transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(39, 174, 96, 0.4);
+    box-shadow: 0 8px 25px rgba(214, 51, 132, 0.5);
 }
 
 .add-table-btn-below {
