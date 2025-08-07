@@ -39,12 +39,32 @@ function getRandomAnimalEmoji() {
 }
 
 // People management functions
+function setPeopleCount(value) {
+    const newCount = parseInt(value);
+    if (newCount && newCount >= 1) {
+        if (newCount > peopleCount) {
+            // Add people
+            while (peopleCount < newCount) {
+                increasePeople();
+            }
+        } else if (newCount < peopleCount) {
+            // Remove people
+            while (peopleCount > newCount && peopleCount > 1) {
+                decreasePeople();
+            }
+        }
+    }
+    // Update the input to reflect the actual count
+    document.getElementById('peopleCount').value = peopleCount;
+}
+
 function increasePeople() {
     peopleCount++;
     people.push(`Guest ${peopleCount}`);
     peopleIcons.push(getRandomAnimalEmoji());
     updatePeopleDisplay();
     updateMatrix();
+    document.getElementById('peopleCount').value = peopleCount;
 }
 
 function decreasePeople() {
@@ -54,6 +74,7 @@ function decreasePeople() {
         peopleIcons.pop();
         updatePeopleDisplay();
         updateMatrix();
+        document.getElementById('peopleCount').value = peopleCount;
     }
 }
 
@@ -85,7 +106,7 @@ function addPerson() {
         return iconElement.textContent;
     });
     
-    document.getElementById('peopleCount').textContent = peopleCount;
+    document.getElementById('peopleCount').value = peopleCount;
     updateMatrix();
 }
 
@@ -101,7 +122,6 @@ function removePerson(index) {
 
 function updatePeopleDisplay() {
     const peopleList = document.getElementById('peopleList');
-    const peopleCountElement = document.getElementById('peopleCount');
     
     // Clear existing people
     peopleList.innerHTML = '';
@@ -118,7 +138,7 @@ function updatePeopleDisplay() {
         peopleList.appendChild(personItem);
     }
     
-    peopleCountElement.textContent = peopleCount;
+    document.getElementById('peopleCount').value = peopleCount;
 }
 
 function updatePersonName(index, name) {
@@ -237,11 +257,47 @@ function updateSymmetricCell(person1, person2, score) {
 }
 
 // Tables management functions
+function setTablesCount(value) {
+    const newCount = parseInt(value);
+    if (newCount && newCount >= 1) {
+        if (newCount > tablesCount) {
+            // Get the current chairs per table setting
+            const totalChairsElement = document.getElementById('totalChairsCount');
+            const chairsFromInput = totalChairsElement ? parseInt(totalChairsElement.value) : 1;
+            const currentChairsPerTable = tables.length > 0 ? tables[0].chairs : 1;
+            const chairsToUse = chairsFromInput || currentChairsPerTable;
+            
+            // Add tables with the current chairs setting
+            while (tablesCount < newCount) {
+                tablesCount++;
+                tables.push({ chairs: chairsToUse });
+            }
+        } else if (newCount < tablesCount) {
+            // Remove tables
+            while (tablesCount > newCount && tablesCount > 1) {
+                tablesCount--;
+                tables.pop();
+            }
+        }
+        updateTablesDisplay();
+        updateTotalChairsDisplay();
+    }
+    // Update the input to reflect the actual count
+    document.getElementById('tablesCount').value = tablesCount;
+}
+
 function increaseTables() {
     tablesCount++;
-    tables.push({ chairs: 1 });
+    // Get the current chairs per table setting
+    const currentChairsPerTable = tables.length > 0 ? tables[0].chairs : 1;
+    const totalChairsElement = document.getElementById('totalChairsCount');
+    const chairsFromInput = totalChairsElement ? parseInt(totalChairsElement.value) : 1;
+    const chairsToUse = chairsFromInput || currentChairsPerTable;
+    
+    tables.push({ chairs: chairsToUse });
     updateTablesDisplay();
     updateTotalChairsDisplay();
+    document.getElementById('tablesCount').value = tablesCount;
 }
 
 function decreaseTables() {
@@ -250,10 +306,25 @@ function decreaseTables() {
         tables.pop();
         updateTablesDisplay();
         updateTotalChairsDisplay();
+        document.getElementById('tablesCount').value = tablesCount;
     }
 }
 
 // Total chairs management functions
+function setTotalChairsCount(value) {
+    const newChairs = parseInt(value);
+    if (newChairs && newChairs >= 1) {
+        // Set all tables to have the same number of chairs
+        for (let i = 0; i < tables.length; i++) {
+            tables[i].chairs = newChairs;
+        }
+        updateTablesDisplay();
+        updateTotalChairsDisplay();
+    }
+    // Update the input to reflect the actual count
+    document.getElementById('totalChairsCount').value = tables.length > 0 ? tables[0].chairs : 1;
+}
+
 function increaseTotalChairs() {
     // Add one chair to all tables at the same time
     if (tables.length > 0) {
@@ -291,7 +362,65 @@ function updateTotalChairsDisplay() {
     const totalChairsElement = document.getElementById('totalChairsCount');
     if (totalChairsElement && tables.length > 0) {
         // Display chairs per table (assuming all tables have the same number of chairs)
-        totalChairsElement.textContent = tables[0].chairs;
+        totalChairsElement.value = tables[0].chairs;
+    }
+}
+
+// Individual table chair management functions
+function setChairsCount(tableIndex, value) {
+    const newChairs = parseInt(value);
+    if (newChairs && newChairs >= 1 && tableIndex < tables.length) {
+        tables[tableIndex].chairs = newChairs;
+        updateChairsPosition(tableIndex, newChairs);
+        
+        // Update total chairs display if all tables have the same number
+        const allSameChairs = tables.every(table => table.chairs === tables[0].chairs);
+        if (allSameChairs) {
+            updateTotalChairsDisplay();
+        }
+    }
+    // Update the input to reflect the actual count
+    const chairsCountElement = document.getElementById(`chairsCount${tableIndex}`);
+    if (chairsCountElement) {
+        chairsCountElement.value = tables[tableIndex]?.chairs || 1;
+    }
+}
+
+function increaseChairs(tableIndex) {
+    if (tableIndex < tables.length) {
+        tables[tableIndex].chairs++;
+        updateChairsPosition(tableIndex, tables[tableIndex].chairs);
+        
+        // Update the counter display for this table
+        const chairsCountElement = document.getElementById(`chairsCount${tableIndex}`);
+        if (chairsCountElement) {
+            chairsCountElement.value = tables[tableIndex].chairs;
+        }
+        
+        // Update total chairs display if all tables have the same number
+        const allSameChairs = tables.every(table => table.chairs === tables[0].chairs);
+        if (allSameChairs) {
+            updateTotalChairsDisplay();
+        }
+    }
+}
+
+function decreaseChairs(tableIndex) {
+    if (tableIndex < tables.length && tables[tableIndex].chairs > 1) {
+        tables[tableIndex].chairs--;
+        updateChairsPosition(tableIndex, tables[tableIndex].chairs);
+        
+        // Update the counter display for this table
+        const chairsCountElement = document.getElementById(`chairsCount${tableIndex}`);
+        if (chairsCountElement) {
+            chairsCountElement.value = tables[tableIndex].chairs;
+        }
+        
+        // Update total chairs display if all tables have the same number
+        const allSameChairs = tables.every(table => table.chairs === tables[0].chairs);
+        if (allSameChairs) {
+            updateTotalChairsDisplay();
+        }
     }
 }
 
@@ -299,10 +428,15 @@ function addTable() {
     const setupContainer = document.getElementById('setupContainer');
     const newTableIndex = setupContainer.children.length - 1; // Subtract 1 because the add button is also a child
     
-    // Get the number of chairs from the previous table (if it exists)
-    let previousChairs = 1;
+    // Get the current chairs per table setting from the input
+    const totalChairsElement = document.getElementById('totalChairsCount');
+    const chairsFromInput = totalChairsElement ? parseInt(totalChairsElement.value) : 1;
+    
+    // Get chairs from existing tables or use input value
+    let chairsToUse = chairsFromInput;
     if (tables.length > 0) {
-        previousChairs = tables[tables.length - 1].chairs;
+        // If we have existing tables, prefer the input value but fall back to existing table chairs
+        chairsToUse = chairsFromInput || tables[tables.length - 1].chairs;
     }
     
     const tableVisual = document.createElement('div');
@@ -323,10 +457,10 @@ function addTable() {
     
     // Update the global state
     tablesCount = newTableIndex + 1;
-    tables.push({ chairs: previousChairs });
+    tables.push({ chairs: chairsToUse });
     
-    document.getElementById('tablesCount').textContent = tablesCount;
-    updateChairsPosition(newTableIndex, previousChairs);
+    document.getElementById('tablesCount').value = tablesCount;
+    updateChairsPosition(newTableIndex, chairsToUse);
     updateTotalChairsDisplay();
 }
 
@@ -372,7 +506,7 @@ function updateTablesDisplay() {
         updateChairsPosition(i, tables[i]?.chairs || 1);
     }
     
-    tablesCountElement.textContent = tablesCount;
+    tablesCountElement.value = tablesCount;
     updateTotalChairsDisplay();
 }
 

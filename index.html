@@ -48,11 +48,9 @@
         <main class="main-content">
             <div class="people-section">
                 <div class="people-counter">
-                    <span class="counter-label">Total People</span>
+                    <span class="counter-label">Total Guests</span>
                     <div class="counter-controls">
-                        <button class="counter-btn decrease" onclick="decreasePeople()">↓</button>
-                        <span class="counter-value" id="peopleCount">1</span>
-                        <button class="counter-btn increase" onclick="increasePeople()">↑</button>
+                        <input type="number" class="counter-input" id="peopleCount" value="1" min="1" onchange="setPeopleCount(this.value)">
                     </div>
                 </div>
                 <div class="people-list" id="peopleList">
@@ -82,17 +80,13 @@
                     <div class="tables-counter">
                         <span class="counter-label">Total Tables</span>
                         <div class="counter-controls">
-                            <button class="counter-btn decrease" onclick="decreaseTables()">↓</button>
-                            <span class="counter-value" id="tablesCount">1</span>
-                            <button class="counter-btn increase" onclick="increaseTables()">↑</button>
+                            <input type="number" class="counter-input" id="tablesCount" value="1" min="1" onchange="setTablesCount(this.value)">
                         </div>
                     </div>
                     <div class="chairs-counter">
                         <span class="counter-label">Chair(s) Per Table</span>
                         <div class="counter-controls">
-                            <button class="counter-btn decrease" onclick="decreaseTotalChairs()">↓</button>
-                            <span class="counter-value" id="totalChairsCount">1</span>
-                            <button class="counter-btn increase" onclick="increaseTotalChairs()">↑</button>
+                            <input type="number" class="counter-input" id="totalChairsCount" value="1" min="1" onchange="setTotalChairsCount(this.value)">
                         </div>
                     </div>
                 </div>
@@ -103,11 +97,6 @@
                         <div class="table-circle">
                             <span class="table-number">1</span>
                         </div>
-                    </div>
-                    <div class="table-controls">
-                        <button class="counter-btn small decrease" onclick="decreaseChairs(0)">↓</button>
-                        <span class="counter-value small" id="chairsCount0">1</span>
-                        <button class="counter-btn small increase" onclick="increaseChairs(0)">↑</button>
                     </div>
                     <button class="remove-table-btn" onclick="removeTable(0)">-</button>
                 </div>
