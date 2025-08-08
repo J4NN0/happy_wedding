@@ -14,13 +14,17 @@ That’s where this tool comes in. It takes your guest list and their interactio
 
 # Seating Optimization Logic
 
-The problem is [NP-Hard](https://en.wikipedia.org/wiki/NP-hardness) where the goal is to partition the set of `N` guests into `K` tables (groups), each with `M` elements, and assign a table (group index) to each guest.
+This seating optimization is a variation of the balanced partitioning problem, which is [NP-Hard](https://en.wikipedia.org/wiki/NP-hardness). The aim is to assign `N` guests to `K` tables, each with a maximum of `M` seats, in a way that maximizes the average mood across all tables that are actually in use. The mood is determined from a symmetric `N × N` interaction matrix, where each entry `(i, j)` represents the mood score when guest `i` and guest `j` are seated together. Positive scores indicate good chemistry, while negative scores reflect tension.
 
-The tool uses a brute-force recursive algorithm that explores every possible way to assign guests to tables, in order to maximize the average mood at the wedding. Each guest is assigned to one of the tables. For every complete assignment, the algorithm calculates the total mood for each table by summing the pairwise interactions of all guests seated together (as defined in a symmetric `N × N` matrix), and computes the average mood across all non-empty tables.
+The algorithm takes a brute-force approach, exploring every possible way to seat the guests. It works recursively, starting with the first guest and trying them at each table in turn, then moving on to the next guest, and so on, until everyone is seated. Once a complete seating arrangement is produced, it is scored by summing the pairwise interaction values for all guests sharing a table. The total score for the arrangement is the sum of the scores from all tables, and this value is divided by the number of tables that are actually occupied to produce the average mood score. If this score is higher than any found so far, the current seating arrangement is saved as the best solution.
 
-While this brute-force approach guarantees the optimal result, it does not scale well. This approach explores every possible seating configuration, which leads to an exponential growth in time. For larger inputs, approximations or heuristic-based methods (like greedy search or genetic algorithms) could offer practical runtime improvements with near-optimal results.
+While this exhaustive method guarantees an optimal solution, the search space grows extremely quickly. Without any optimisation, there are `K^N` possible arrangements to check, and each one can take up to `O(N^2)` time to score because every pair of guests may need to be considered. For even moderately sized weddings, this number becomes very large, making the naïve version impractical.
 
-So, based on the example above, here’s what the interaction matrix would look like for Batman, Robin, Joker, and Alfred:
+To make the process more efficient, the implementation uses pruning. It keeps track of how many guests are currently assigned to each table while exploring the search tree. If a table has already reached its maximum capacity, the algorithm stops trying to assign further guests to it for that branch of the search. This prevents a large number of invalid configurations from ever being considered. Similarly, if a table would exceed its capacity before everyone is assigned, the branch is abandoned immediately. These checks cut off significant portions of the search space while still ensuring that the final result is exact.
+
+Despite the pruning, the algorithm still examines all feasible configurations, so for the given problem size the result is guaranteed to be the best possible. For larger events, however, the exponential complexity would still become a bottleneck, and heuristic or approximate methods such as greedy placement, genetic algorithms, or simulated annealing would be needed to find good solutions within a reasonable time.
+
+As an example, suppose we have four guests - Batman, Robin, Joker, and Alfred - with the following interaction matrix:
 
 |        | Batman | Robin | Joker | Alfred |
 | -------| -------|-------|-------|--------|
@@ -29,8 +33,4 @@ So, based on the example above, here’s what the interaction matrix would look 
 | Joker  | -5     | -3    | 0     | +2     |
 | Alfred | +2     | +2    | +2    | 0      |
 
-And considering two tables available with two chairs each, the optimal solution would be:
-- Table 1: Batman and Robin
-- Table 2: Joker and Alfred
-
-With an average mood score of `3.50`.
+If there are two tables with two seats each, the optimal arrangement is to seat Batman and Robin together at the first table, and Joker with Alfred at the second. This yields an average mood score of `3.50`, which is the highest possible given the constraints.
