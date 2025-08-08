@@ -36,12 +36,12 @@ function mood(currentGuestId, sol, interactionMatrix, bestSol, totGuests, totTab
     }
 
     for (let tableId = 0; tableId < totTables; tableId++) {
-        if (counts[tableId] >= seatsPerTable) 
+        if (counts[tableId] >= totSeatsPerTable) 
             continue;
         
         sol[currentGuestId] = tableId;
         counts[tableId]++;
-        mood(currentGuestId + 1, sol, interactionMatrix, bestSol, totGuests, totTables, totSeatsPerTable);
+        mood(currentGuestId + 1, sol, interactionMatrix, bestSol, totGuests, totTables, totSeatsPerTable, counts);
         counts[tableId]--;
     }
 }
