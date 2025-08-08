@@ -1,80 +1,77 @@
-// Wedding seating optimization algorithm
-// N = Number of guests
-// K = Number of tables  
-// M = Table seats
-function mood(pos, sol, matr, bestSol, n, k, m) {
-    let i = 0, j = 0, t = 0;
-    let ris = 0, tot = 0, cntId = 0, nTab = k;
-    let humorTmp;
+function mood(currentGuestId, sol, interactionMatrix, bestSol, totGuests, totTables, totSeatsPerTable, counts) {
+    if (currentGuestId >= totGuests) {
+        let totInteractionScore = 0;
+        let tablesInUse = totTables;
 
-    if (pos >= n) {
-        for (i = 0; i < k; i++) {
-            ris = 0;
-            cntId = 0;
-            for (j = 0; j < n; j++) {
-                if (sol[j] === i) {
-                    cntId++;
-                    if (cntId > m) return;
-                    for (t = j + 1; t < n; t++) {
-                        if (sol[t] === i) {
-                            ris += matr[j][t];
-                        }
+        for (let tableId = 0; tableId < totTables; tableId++) {
+            let tmpInteractionScore = 0;
+
+            for (let guestId = 0; guestId < totGuests; guestId++) {
+                if (sol[guestId] !== tableId) 
+                    continue;
+
+                for (let g = guestId + 1; g < totGuests; g++) {
+                    if (sol[g] === tableId) {
+                        tmpInteractionScore += interactionMatrix[guestId][g];
                     }
                 }
             }
-            if (cntId === 0) {
-                nTab--; // empty table
+
+            if (counts[tableId] === 0) {
+                tablesInUse--;
             }
-            tot += ris;
+            totInteractionScore += tmpInteractionScore;
         }
-        humorTmp = tot / nTab;
-        if (humorTmp > humorMax) {
-            humorMax = humorTmp;
-            for (i = 0; i < n; i++) {
-                bestSol[i] = sol[i];
+
+        if (tablesInUse === 0) return; // ultra-safety
+
+        const tmpHumor = totInteractionScore / tablesInUse;
+        if (tmpHumor > humorMax) {
+            humorMax = tmpHumor;
+            for (let guestId = 0; guestId < totGuests; guestId++) {
+                bestSol[guestId] = sol[guestId];
             }
         }
         return;
     }
 
-    for (i = 0; i < k; i++) {
-        sol[pos] = i;
-        mood(pos + 1, sol, matr, bestSol, n, k, m);
+    for (let tableId = 0; tableId < totTables; tableId++) {
+        if (counts[tableId] >= seatsPerTable) 
+            continue;
+        
+        sol[currentGuestId] = tableId;
+        counts[tableId]++;
+        mood(currentGuestId + 1, sol, interactionMatrix, bestSol, totGuests, totTables, totSeatsPerTable);
+        counts[tableId]--;
     }
 }
 
-// Function to start wedding planning optimization
 function startWeddingPlanning() {
     const totalSeats = getTotalChairs();
     if (totalSeats < peopleCount) {
         alert(`Not enough seats! You have ${peopleCount} guests but only ${totalSeats} seats available.`);
         return;
     }
-    
-    // For simplicity, we'll assume all tables have the same capacity (max chairs from any table)
-    const seatsPerTable = Math.max(...tables.map(table => table.chairs));
-    
-    // Initialize variables
-    humorMax = 0;
+
+    humorMax = Number.NEGATIVE_INFINITY;
     currentSolution = new Array(peopleCount).fill(0);
     bestSolution = new Array(peopleCount).fill(0);
-
-    // Get interaction matrix
+    
+    // For simplicity, all tables have the same capacity
+    const seatsPerTable = Math.max(...tables.map(table => table.chairs));
+    const counts = new Array(tablesCount).fill(0);
     const interactionMatrix = getInteractionMatrix();
     
-    // Start the optimization
     console.log('Starting wedding seating optimization...');
     console.log(`Guests: ${peopleCount}, Tables: ${tablesCount}, Max seats per table: ${seatsPerTable}`);
 
-    mood(0, currentSolution, interactionMatrix, bestSolution, peopleCount, tablesCount, seatsPerTable);
+    mood(0, currentSolution, interactionMatrix, bestSolution, peopleCount, tablesCount, seatsPerTable, counts);
 
-    // Display results
     displaySeatingResults();
 }
 
-// Function to display the optimization results
 function displaySeatingResults() {
-    if (humorMax === 0) {
+    if (!Number.isFinite(humorMax)) {
         alert('No valid seating arrangement found. Please check your table capacity settings.');
         return;
     }

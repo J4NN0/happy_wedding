@@ -6,7 +6,7 @@ let peopleIcons = ['🐶']; // Store icons for each person
 let tables = [{ chairs: 1 }];
 
 // Wedding planning global variables
-let humorMax = 0;
+let humorMax = Number.NEGATIVE_INFINITY;
 let bestSolution = [];
 let currentSolution = [];
 
