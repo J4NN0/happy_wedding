@@ -1,6 +1,8 @@
 # happy_wedding
 
-This is the code I originally wrote during my first year of university. Unfortunately for anyone reading it today, I was more focused on the mathematical logic than on writing clean code.
+This is the code I originally wrote during my first year of university. Unfortunately for anyone reading it today, at the time I was more focused on the mathematical logic than on writing clean/readable code. Variable names follow a very mathematical style (think `i`, `j`, `k`), comments are a luxury I couldn’t afford, and there’s no pruning or optimisation implemented — it’s a pure, unfiltered brute-force approach.
+
+For a clearer (I hope), more readable version (and to spare yourself some headaches), please refer to the [new implementation](https://github.com/J4NN0/happy-wedding/blob/master/js/seating-optimizer.js).
 
 # Usage
 
